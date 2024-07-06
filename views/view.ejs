@@ -1,0 +1,49 @@
+<%- include("partials/header.ejs") %>
+
+<main>
+
+    <div class="container col-xxl-8 px-4">
+        <div class="row flex-lg-row-reverse align-items-center g-5 py-2">
+          <div class="col-10 col-sm-8 col-lg-6">
+            <% if(item.image !== null){ %>
+                <% if(item.id != 1 && item.id != 2 && item.id != 3) { %>
+                    <img src="data:image/png;base64,<%= item.image %>" class="d-block mx-lg-auto img-fluid rounded-3" alt="Image" width="700" height="500" loading="lazy">
+                <% } else { %>
+                    <img src="<%= item.image %>" class="d-block mx-lg-auto img-fluid rounded-3" alt="Image" width="700" height="500" loading="lazy">
+                <% } %>
+            <% } %>
+            <div class="container text-center">
+                <small class="text-body-secondary">Written by <%=item.author  %></small>
+            </div>
+            <div class="container text-center">
+                <small class="text-body-secondary">Created at: <%=item.created  %></small>
+            </div>
+            <div class="container text-center">
+                <% if(item.updated){ %>
+                    <small class="text-body-secondary">Updated at: <%=item.updated  %></small>
+                <% } %>
+            </div>
+            <% if(item.id != 1 && item.id != 2 && item.id != 3) { %>
+                <% if (item.userID === userId) { %>
+                    <div class="container btn text-center">
+                        <button type="button" class="btn btn-sm btn-outline-secondary clickable" id="<%=item.id  %>_edit">Edit</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary clickable" id="<%=item.id  %>_dlt_btn">Delete</button>
+                    </div>
+                <% } %>    
+            <% } %>
+          </div>
+          <div class="col-lg-6">
+            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3"><%= item.title %></h1>
+            <p class="lead">
+                <%=item.content  %>
+            </p>
+          </div>
+        </div>
+    </div>
+
+</main>
+
+<%- include("partials/footer.ejs") %>
+
+
+
