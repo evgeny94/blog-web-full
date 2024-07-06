@@ -7,33 +7,35 @@
               
                       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                         <% if(posts.length>3){ %>
-                          <% for(let i=3; i<posts.length; i++) { %>
-                              <div class="col" id="<%=posts[i].id  %>">
-                                  <div class="card shadow-sm">
-                                      <img class="img-fluid bd-placeholder-img card-img-top img-card clickable" id="<%=posts[i].id  %>" src="data:image/png;base64,<%= posts[i].image %>"> 
-                                      <div class="card-body">
-                                          <h5 class="card-title"><%= posts[i].title %></h5> 
-                                          <p class="card-text food cutoff-text"><%=posts[i].content  %> </p>
-                                          <div class="d-flex justify-content-between align-items-center">
-                                              <div class="btn-group">
-                                              <button type="button" class="btn btn-sm btn-outline-secondary clickable" id="<%=posts[i].id  %>">View</button>
-                                              <% if(posts[i].id != 1 && posts[i].id != 2 && posts[i].id != 3) { %>
-                                                <% if (posts[i].userID === userId) { %>
-                                                    <button type="button" class="btn btn-sm btn-outline-secondary clickable" id="<%=posts[i].id  %>_edit">Edit</button>
-                                                    <button type="button" class="btn btn-sm btn-outline-secondary clickable" id="<%=posts[i].id  %>_dlt_btn">Delete</button>
+                            <% if (posts[i].userID === userId) { %>
+                                <% for(let i=3; i<posts.length; i++) { %>
+                                <div class="col" id="<%=posts[i].id  %>">
+                                    <div class="card shadow-sm">
+                                        <img class="img-fluid bd-placeholder-img card-img-top img-card clickable" id="<%=posts[i].id  %>" src="data:image/png;base64,<%= posts[i].image %>"> 
+                                        <div class="card-body">
+                                            <h5 class="card-title"><%= posts[i].title %></h5> 
+                                            <p class="card-text food cutoff-text"><%=posts[i].content  %> </p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="btn-group">
+                                                <button type="button" class="btn btn-sm btn-outline-secondary clickable" id="<%=posts[i].id  %>">View</button>
+                                                <% if(posts[i].id != 1 && posts[i].id != 2 && posts[i].id != 3) { %>
+                                                    <% if (posts[i].userID === userId) { %>
+                                                        <button type="button" class="btn btn-sm btn-outline-secondary clickable" id="<%=posts[i].id  %>_edit">Edit</button>
+                                                        <button type="button" class="btn btn-sm btn-outline-secondary clickable" id="<%=posts[i].id  %>_dlt_btn">Delete</button>
+                                                    <% } %>
                                                 <% } %>
-                                              <% } %>
-                                              </div>
-                                              <small class="text-body-secondary">Created at: <%=posts[i].created.split(' ')[0]  %></small>
-                                          </div>
-                                          <div class="container text-center">
-                                              <small class="text-body-secondary">Written by <%=posts[i].author  %></small>
-                                          </div>
-                                          
-                                      </div>
-                                  </div>
-                              </div>
-                          <% } %>
+                                                </div>
+                                                <small class="text-body-secondary">Created at: <%=posts[i].created.split(' ')[0]  %></small>
+                                            </div>
+                                            <div class="container text-center">
+                                                <small class="text-body-secondary">Written by <%=posts[i].author  %></small>
+                                            </div>
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                            <% } %>
                           <% } else { %>
                               <div class="container-fluid text-center">
                                     <h2>Empty list</h2>
