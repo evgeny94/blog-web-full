@@ -7,8 +7,8 @@
               
                       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                         <% if(posts.length>3){ %>
-                            <% if (posts[i].userID === userId) { %>
-                                <% for(let i=3; i<posts.length; i++) { %>
+                            <% for(let i=3; i<posts.length; i++) { %>
+                                <% if (posts[i].userID === userId) { %>
                                 <div class="col" id="<%=posts[i].id  %>">
                                     <div class="card shadow-sm">
                                         <img class="img-fluid bd-placeholder-img card-img-top img-card clickable" id="<%=posts[i].id  %>" src="data:image/png;base64,<%= posts[i].image %>"> 
