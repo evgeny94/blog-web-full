@@ -101,3 +101,15 @@ export function checkAndUpdateChanges(items, itemId, postTitleNew, postAuthorNew
     return items;
   }
 }
+
+
+
+export function convertImageToBase64(imagePath) {
+  // Read the image file
+  const imageBuffer = fs.readFileSync(imagePath);
+  
+  // Convert the image buffer to a Base64 string
+  const base64Image = imageBuffer.toString('base64');
+  
+  return base64Image;
+}

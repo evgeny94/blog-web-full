@@ -3,7 +3,7 @@ import bodyParser from "body-parser";
 import multer from 'multer';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { formatDateTime, getItem, deletePost, checkAndUpdateChanges } from "./public/functions/functions.js";
+import { formatDateTime, getItem, deletePost, checkAndUpdateChanges, convertImageToBase64 } from "./public/functions/functions.js";
 import { Post } from './public/classes/post.js';
 import session from 'express-session';
 import { v4 as uuidv4 } from 'uuid';
@@ -21,7 +21,7 @@ const storage = multer.memoryStorage()
 
 const upload = multer({ storage: storage });
 
-var base64Image = "";
+var base64Image = convertImageToBase64("./public/uploads/default_image.png");
 
 var posts = [
   {
@@ -99,6 +99,7 @@ app.post('/submit', upload.single('post-image'), (req, res) => {
 
     console.log(`Uploaded image: ${req.file.originalname}`);
   } else {
+    base64Image = convertImageToBase64("./public/uploads/default_image.png");
     console.log('No image uploaded');
   }
 

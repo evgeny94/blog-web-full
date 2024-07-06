@@ -18,8 +18,10 @@
                                               <div class="btn-group">
                                               <button type="button" class="btn btn-sm btn-outline-secondary clickable" id="<%=posts[i].id  %>">View</button>
                                               <% if(posts[i].id != 1 && posts[i].id != 2 && posts[i].id != 3) { %>
-                                              <button type="button" class="btn btn-sm btn-outline-secondary clickable" id="<%=posts[i].id  %>_edit">Edit</button>
-                                              <button type="button" class="btn btn-sm btn-outline-secondary clickable" id="<%=posts[i].id  %>_dlt_btn">Delete</button>
+                                                <% if (posts[i].userID === userId) { %>
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary clickable" id="<%=posts[i].id  %>_edit">Edit</button>
+                                                    <button type="button" class="btn btn-sm btn-outline-secondary clickable" id="<%=posts[i].id  %>_dlt_btn">Delete</button>
+                                                <% } %>
                                               <% } %>
                                               </div>
                                               <small class="text-body-secondary">Created at: <%=posts[i].created.split(' ')[0]  %></small>
